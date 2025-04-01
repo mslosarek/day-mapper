@@ -4,7 +4,16 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
-import { Button, IconButton, Stack, TextField, FormHelperText, CircularProgress, Snackbar, Alert } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  Stack,
+  TextField,
+  FormHelperText,
+  CircularProgress,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DailyPlan } from "./DailyPlan";
 
@@ -12,7 +21,7 @@ const todoSchema = z.object({
   items: z.array(
     z.object({
       text: z.string().min(1, "Item cannot be empty"),
-    })
+    }),
   ),
 });
 
@@ -39,8 +48,15 @@ type ScheduleResponse = {
 export function TodoList() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [scheduleData, setScheduleData] = useState<ScheduleResponse | null>(null);
-  const { control, handleSubmit, register, formState: { errors } } = useForm<TodoForm>({
+  const [scheduleData, setScheduleData] = useState<ScheduleResponse | null>(
+    null,
+  );
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<TodoForm>({
     resolver: zodResolver(todoSchema),
     defaultValues: {
       items: [{ text: "" }],
@@ -57,10 +73,10 @@ export function TodoList() {
     setError(null);
 
     try {
-      const response = await fetch('/api/todo', {
-        method: 'POST',
+      const response = await fetch("/api/todo", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -70,12 +86,13 @@ export function TodoList() {
       }
 
       const result = await response.json();
-      console.log('Server response:', result);
+      console.log("Server response:", result);
       setScheduleData(result);
-
     } catch (error) {
-      console.error('Error submitting todo items:', error);
-      setError(error instanceof Error ? error.message : 'Failed to submit todo items');
+      console.error("Error submitting todo items:", error);
+      setError(
+        error instanceof Error ? error.message : "Failed to submit todo items",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -104,7 +121,9 @@ export function TodoList() {
                 </IconButton>
               </Stack>
               {errors.items?.[index]?.text && (
-                <FormHelperText error>{errors.items[index].text?.message}</FormHelperText>
+                <FormHelperText error>
+                  {errors.items[index].text?.message}
+                </FormHelperText>
               )}
             </Stack>
           ))}
@@ -121,7 +140,11 @@ export function TodoList() {
               variant="contained"
               type="submit"
               disabled={isLoading}
-              startIcon={isLoading ? <CircularProgress size={20} color="inherit" /> : null}
+              startIcon={
+                isLoading ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : null
+              }
             >
               {isLoading ? "Processing..." : "Generate Daily Plan"}
             </Button>
@@ -140,7 +163,7 @@ export function TodoList() {
         open={!!error}
         autoHideDuration={6000}
         onClose={() => setError(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert onClose={() => setError(null)} severity="error" variant="filled">
           {error}

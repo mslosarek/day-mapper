@@ -1,4 +1,12 @@
-import { Stack, Button, Typography, Divider, Card, CardContent, Box } from "@mui/material";
+import {
+  Stack,
+  Button,
+  Typography,
+  Divider,
+  Card,
+  CardContent,
+  Box,
+} from "@mui/material";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import PetsIcon from "@mui/icons-material/Pets";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
@@ -68,16 +76,15 @@ export function DailyPlan({ scheduleData, onBack }: DailyPlanProps) {
     <Stack spacing={3} sx={{ maxWidth: 600, margin: "auto", p: 2, mt: 4 }}>
       <Divider sx={{ mb: 2 }} />
 
-      <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
-        <Typography variant="h5">
-          Your Daily Plan
-        </Typography>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Typography variant="h5">Your Daily Plan</Typography>
 
-        <Button
-          variant="outlined"
-          onClick={onBack}
-          size="small"
-        >
+        <Button variant="outlined" onClick={onBack} size="small">
           Clear Plan
         </Button>
       </Stack>
@@ -92,26 +99,30 @@ export function DailyPlan({ scheduleData, onBack }: DailyPlanProps) {
         <Card key={index} variant="outlined">
           <CardContent>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                bgcolor: 'primary.light',
-                color: 'primary.contrastText',
-                minWidth: 48,
-                minHeight: 48,
-                overflow: 'hidden'
-              }}>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 24,
-                  height: 24
-                }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  bgcolor: "primary.light",
+                  color: "primary.contrastText",
+                  minWidth: 48,
+                  minHeight: 48,
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 24,
+                    height: 24,
+                  }}
+                >
                   {getIconForVisualElement(item.visual_element)}
                 </Box>
               </Box>
@@ -122,7 +133,11 @@ export function DailyPlan({ scheduleData, onBack }: DailyPlanProps) {
                 <Typography variant="body2" color="text.secondary">
                   {item.duration_minutes} minutes | {item.category}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mt: 1 }}
+                >
                   {item.reasoning}
                 </Typography>
               </Stack>

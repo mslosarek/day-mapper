@@ -1,6 +1,6 @@
-import { AppBar, Toolbar, Typography, Container } from '@mui/material';
-import ThemeRegistry from './ThemeRegistry';
-import { TodoList } from '@/components/TodoList';
+import { AppBar, Toolbar, Typography, Container } from "@mui/material";
+import ThemeRegistry from "./ThemeRegistry";
+import { TodoList } from "@/components/TodoList";
 
 export default function Home() {
   return (
@@ -17,7 +17,8 @@ export default function Home() {
           What are the top things you want to accomplish today?
         </Typography>
         <Typography variant="body1" gutterBottom sx={{ mb: 3 }}>
-          (e.g. go for a 20 minute run, mow the lawn, prepare for meeting with Jessica at work, help daughter with science project)
+          (e.g. go for a 20 minute run, mow the lawn, prepare for meeting with
+          Jessica at work, help daughter with science project)
         </Typography>
         <TodoList />
       </Container>

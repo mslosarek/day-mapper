@@ -1,9 +1,9 @@
-import { createTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
+import { grey } from "@mui/material/colors";
 
 export const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
       main: grey[900],
       light: grey[800],
