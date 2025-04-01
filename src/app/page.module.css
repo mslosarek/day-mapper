@@ -27,11 +27,29 @@
   }
 }
 
-.main {
+.container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  background-color: #fafafa;
+}
+
+.header {
+  background-color: #333;
+  color: #fafafa;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
 }
 
 .main ol {
@@ -162,6 +180,15 @@ a.secondary {
 }
 
 @media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #1a1a1a;
+  }
+
+  .header {
+    background-color: #262626;
+    color: #e5e5e5;
+  }
+
   .logo {
     filter: invert();
   }
